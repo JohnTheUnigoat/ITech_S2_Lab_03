@@ -35,12 +35,13 @@
 	$date_defaults = $stmt->fetch(PDO::FETCH_ASSOC);
 	?>
 	<main>
-		<div class='container'>
-			<!-- Genre form -->
-			<div class='item'>
-				<h2>Select movies by genre</h2>
+		<!-- Genre form -->
+		<h2>Select movies by genre</h2>
+		<div class="container">
+
+			<div class="form-container">
 				<form action="genre.php" method="get">
-					<label class="input" for="genre">Genre</label>
+					<label for="genre">Genre</label>
 					<select class="input" name="genre" id="genre">
 						<?php
 						foreach ($genres as $genre_row){
@@ -48,16 +49,35 @@
 							echo "<option value='$genre'>$genre</option>";
 						}
 						?>
-					</select><br>
+					</select>
 					<input class="input" type="submit" value="Submit">
 				</form>
 			</div>
 
-			<!-- Actor form -->
-			<div class='item'>
-				<h2>Select movies by actor</h2>
+			<div class="table-container">
+				<table>
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Date</th>
+							<th>Country</th>
+							<th>Director</th>
+						</tr>
+					</thead>
+					<tbody id="tbody-genre">
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+
+		<!-- Actor form -->
+		<h2>Select movies by actor</h2>
+		<div class="container">
+
+			<div class="form-container">
 				<form action="actor.php" method="get">
-					<label class="input" for="actor">Actor</label>
+					<label for="actor">Actor</label>
 					<select class="input" name="actor" id="actor">
 						<?php
 						foreach ($actors as $actor_row){
@@ -65,27 +85,61 @@
 							echo "<option value='$actor'>$actor</option>";
 						}
 						?>
-					</select><br>
+					</select>
 					<input class="input" type="submit" value="Submit">
 				</form>
 			</div>
 
-			<!-- Time period form -->
-			<div class='item'>
-				<h2>Select movies by time period</h2>
+			<div class="table-container">
+				<table>
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Date</th>
+							<th>Country</th>
+							<th>Director</th>
+						</tr>
+					</thead>
+					<tbody id="tbody-actor">
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+		<!-- Time period form -->
+		<h2>Select movies by time period</h2>
+		<div class="container">
+
+			<div class="form-container">
 				<form action="time_period.php" method="get">
-					<label class="input" for="start">Start date</label>
+					<label for="start">Start date</label>
 					<?php
-					echo "<input class='input' type='date' name='start' 		id='start'value='$date_defaults[min]'>";
-					?><br>
+					echo "<input class='input' type='date' name='start' id='start' value='$date_defaults[min]'>";
+					?>
 
-					<label class="input" for="end">End date</label>
+					<label for="end">End date</label>
 					<?php
-					echo "<input class='input' type='date' name='end' 	id='end'value='$date_defaults[max]'>";
-					?><br>
+					echo "<input class='input' type='date' name='end' id='end' value='$date_defaults[max]'>";
+					?>
 					<input class="input" type="submit" value="Submit">
 				</form>
 			</div>
+
+			<div class="table-container">
+				<table>
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Date</th>
+							<th>Country</th>
+							<th>Director</th>
+						</tr>
+					</thead>
+					<tbody id="tbody_time">
+					</tbody>
+				</table>
+			</div>
+
 		</div>
 	</main>
 </body>

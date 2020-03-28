@@ -2,74 +2,59 @@
 	background-color: #333;
 	color: #eee;
 	font-family: Spartan;
-	font-size: 1.2em;
-}
-
-@media only screen and (min-width: 900px) {
-	main {
-		width: 80%;
-	}
-
-	.container {
-		display:  flex;
-		flex-direction: row;
-	}
-
-	.item {
-		position: relative;
-		width: 30%;
-		height: 70vh;
-		margin: 1em;
-		justify-content: start ;
-	}
-
-	input[type=submit] {
-		position: absolute;
-		bottom: 0px;
-	}
-}
-
-@media only screen and (max-width: 900px) {
-	:root {
-		font-size: 1em;
-	}
-
-	main {
-		width: 95%;
-	}
-
-	.container {
-		display: block;
-	}
-
-	.item {
-		position: static;
-		height: 100%;
-		margin: 1em;
-	}
 }
 
 main {
+	width: 85%;
 	margin: auto;
 }
 
-label {
-	display: block;
-	margin: 0.3em;
+h2 {
+	text-align: center;
 }
 
-h2 {
-	margin: 1em 0em;
+.container {
+	height: 19em;
+}
+
+.form-container {
+	height: 100%;
+	position: relative;
+	width: 30%;
+	float: left;
+}
+
+.table-container {
+	height: 100%;
+	padding: 0 1em;
+	box-sizing: border-box;
+	overflow: auto;
+	width: 70%;
+	float: left;
+}
+
+.input {
+	text-align: left;
+	display: block;
+	width: 100%;
+	padding: 1em;
+	margin: 1em 0;
+	box-sizing: border-box;
+}
+
+label {
+	font-size: 1.2em;
+	padding: 0.3em;
+	display: block;
 }
 
 input, select {
+	margin: 0;
 	background-color: #444;
 	color: #eee;
 	font-family: Spartan;
 	font-size: 1em;
 	padding: 0.6em;
-	margin: 2% 0;
-	width: 100%;
 	border: none;
 	box-sizing: border-box;
 }
@@ -83,16 +68,6 @@ input[type=submit]:hover {
 	border-color: #eee;
 }
 
-form {
-	/* width: 100%; */
-	overflow: hidden;
-}
-
-.table-container {
-	overflow: auto;
-	/* box-shadow: #111 10px 10px 5px; */
-	/* border: solid 1px #eee; */
-}
 
 table {
 	border-collapse: collapse;
@@ -113,5 +88,4 @@ th {
 
 td, th {
 	padding: 1em;
-	/* margin: 1em; */
 }
