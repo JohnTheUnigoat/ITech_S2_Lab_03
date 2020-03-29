@@ -7,6 +7,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Spartan&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="style.css">
 	<title>Ivan Hudzynskyi ITech labs</title>
+	<script src="ajax.js"></script>
+	<?php ?>
 </head>
 <body>
 	<!-- Data from DB -->
@@ -34,6 +36,7 @@
 
 	$date_defaults = $stmt->fetch(PDO::FETCH_ASSOC);
 	?>
+
 	<main>
 		<!-- Genre form -->
 		<h2>Select movies by genre</h2>
@@ -49,7 +52,7 @@
 					}
 					?>
 				</select>
-				<input class="input" type="button" value="Submit">
+				<input class="input" type="button" value="Submit" onclick="getByGenre()">
 			</div>
 
 			<div class="table-container">
@@ -77,11 +80,10 @@
 				<label for="actor">Actor</label>
 				<select class="input" name="actor" id="actor">
 					<?php
-					foreach ($actors as $actor_row){
+					foreach ($actors as $actor_row) {
 						$actor = $actor_row[0];
 						echo "<option value='$actor'>$actor</option>";
-					}
-					?>
+					} ?>
 				</select>
 				<input class="input" type="button" value="Submit">
 			</div>
