@@ -59,12 +59,12 @@ input, select {
 	box-sizing: border-box;
 }
 
-input[type=submit] {
+input[type=button] {
 	border: solid 3px #444;
 	transition: 0.5s;
 }
 
-input[type=submit]:hover {
+input[type=button]:hover {
 	border-color: #eee;
 }
 

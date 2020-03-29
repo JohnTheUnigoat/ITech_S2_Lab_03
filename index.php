@@ -40,18 +40,16 @@
 		<div class="container">
 
 			<div class="form-container">
-				<form action="genre.php" method="get">
-					<label for="genre">Genre</label>
-					<select class="input" name="genre" id="genre">
-						<?php
-						foreach ($genres as $genre_row){
-							$genre = $genre_row[0];
-							echo "<option value='$genre'>$genre</option>";
-						}
-						?>
-					</select>
-					<input class="input" type="submit" value="Submit">
-				</form>
+				<label for="genre">Genre</label>
+				<select class="input" name="genre" id="genre">
+					<?php
+					foreach ($genres as $genre_row){
+						$genre = $genre_row[0];
+						echo "<option value='$genre'>$genre</option>";
+					}
+					?>
+				</select>
+				<input class="input" type="button" value="Submit">
 			</div>
 
 			<div class="table-container">
@@ -76,18 +74,16 @@
 		<div class="container">
 
 			<div class="form-container">
-				<form action="actor.php" method="get">
-					<label for="actor">Actor</label>
-					<select class="input" name="actor" id="actor">
-						<?php
-						foreach ($actors as $actor_row){
-							$actor = $actor_row[0];
-							echo "<option value='$actor'>$actor</option>";
-						}
-						?>
-					</select>
-					<input class="input" type="submit" value="Submit">
-				</form>
+				<label for="actor">Actor</label>
+				<select class="input" name="actor" id="actor">
+					<?php
+					foreach ($actors as $actor_row){
+						$actor = $actor_row[0];
+						echo "<option value='$actor'>$actor</option>";
+					}
+					?>
+				</select>
+				<input class="input" type="button" value="Submit">
 			</div>
 
 			<div class="table-container">
@@ -111,18 +107,16 @@
 		<div class="container">
 
 			<div class="form-container">
-				<form action="time_period.php" method="get">
-					<label for="start">Start date</label>
-					<?php
-					echo "<input class='input' type='date' name='start' id='start' value='$date_defaults[min]'>";
-					?>
+				<label for="start">Start date</label>
+				<?php
+				echo "<input class='input' type='date' name='start' id='start' value='$date_defaults[min]'>";
+				?>
 
-					<label for="end">End date</label>
-					<?php
-					echo "<input class='input' type='date' name='end' id='end' value='$date_defaults[max]'>";
-					?>
-					<input class="input" type="submit" value="Submit">
-				</form>
+				<label for="end">End date</label>
+				<?php
+				echo "<input class='input' type='date' name='end' id='end' value='$date_defaults[max]'>";
+				?>
+				<input class="input" type="button" value="Submit">
 			</div>
 
 			<div class="table-container">
