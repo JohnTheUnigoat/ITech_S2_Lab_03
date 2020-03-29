@@ -8,35 +8,9 @@
 	<link rel="stylesheet" href="style.css">
 	<title>Ivan Hudzynskyi ITech labs</title>
 	<script src="ajax.js"></script>
-	<?php ?>
+	<?php require 'get_form_data.php'; ?>
 </head>
 <body>
-	<!-- Data from DB -->
-	<?php
-	include 'db_connection.php';
-
-	$stmt = $conn->prepare("SELECT title FROM genre");
-	$stmt->execute();
-
-	$genres = $stmt->fetchAll(PDO::FETCH_NUM);
-
-	$stmt = $conn->prepare("SELECT name FROM actor");
-	$stmt->execute();
-
-	$actors = $stmt->fetchAll(PDO::FETCH_NUM);
-
-	$cmd = <<<EDO
-	SELECT
-		MIN(date) AS min,
-		MAX(date) AS max
-	FROM film
-	EDO;
-	$stmt = $conn->prepare($cmd);
-	$stmt->execute();
-
-	$date_defaults = $stmt->fetch(PDO::FETCH_ASSOC);
-	?>
-
 	<main>
 		<!-- Genre form -->
 		<h2>Select movies by genre</h2>
@@ -45,12 +19,9 @@
 			<div class="form-container">
 				<label for="genre">Genre</label>
 				<select class="input" name="genre" id="genre">
-					<?php
-					foreach ($genres as $genre_row){
-						$genre = $genre_row[0];
-						echo "<option value='$genre'>$genre</option>";
-					}
-					?>
+					<?php foreach ($genres as $genre): ?>
+					<option value="<?=$genre?>"> <?=$genre?> </option>
+					<?php endforeach; ?>
 				</select>
 				<input class="input" type="button" value="Submit" onclick="getByGenre()">
 			</div>
@@ -79,11 +50,9 @@
 			<div class="form-container">
 				<label for="actor">Actor</label>
 				<select class="input" name="actor" id="actor">
-					<?php
-					foreach ($actors as $actor_row) {
-						$actor = $actor_row[0];
-						echo "<option value='$actor'>$actor</option>";
-					} ?>
+					<?php foreach ($actors as $actor): ?>
+					<option value="<?=$actor?>"> <?=$actor?> </option>
+					<?php endforeach; ?>
 				</select>
 				<input class="input" type="button" value="Submit">
 			</div>
@@ -110,14 +79,11 @@
 
 			<div class="form-container">
 				<label for="start">Start date</label>
-				<?php
-				echo "<input class='input' type='date' name='start' id='start' value='$date_defaults[min]'>";
-				?>
+				<input class="input" type="date" name="start" id="start" value=<?=$date_defaults['min']?>>
 
 				<label for="end">End date</label>
-				<?php
-				echo "<input class='input' type='date' name='end' id='end' value='$date_defaults[max]'>";
-				?>
+				<input class="input" type="date" name="end" id="end" value=<?=$date_defaults['max']?>>
+
 				<input class="input" type="button" value="Submit">
 			</div>
 
