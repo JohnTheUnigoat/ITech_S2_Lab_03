@@ -1,42 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link href="https://fonts.googleapis.com/css?family=Spartan&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="style.css">
-	<?php
-	$start = $_GET['start'];
-	$end = $_GET['end'];
+<?php
 
-	echo "<title>Movies from $start to $end</title>";
-	?>
-	<title>Document</title>
-</head>
-<body>
-	<main>
-		<?php
-		$dbh = new PDO('mysql:host=localhost;dbname=film_library', 'root', '');
+header('Content-Type: application/json');
 
-		$cmd = <<<EOD
-		SELECT
-			name,
-			date,
-			country,
-			director
-		FROM film
-		WHERE date BETWEEN :start AND :end
-		ORDER BY date
-		EOD;
+class Movie {
+	var $name;
+	var $date;
+	var $country;
+	var $director;
 
-		$stmt = $dbh->prepare($cmd);
-		$stmt->execute([':start' => $start, ':end' => $end]);
+	function __construct($name, $date, $country, $director) {
+		$this->name = $name;
+		$this->date = $date;
+		$this->country = $country;
+		$this->director = $director;
+	}
+}
 
-		echo "<h2>Movies that came out from $start to $end</h2>";
+$start = $_GET['start'];
+$end = $_GET['end'];
 
-		include 'movies_table_print.php';
-		?>
-	</main>
-</body>
-</html>
+require 'db_connection.php';
+
+$cmd = <<<EOD
+SELECT
+	name,
+	date,
+	country,
+	director
+FROM film
+WHERE date BETWEEN :start AND :end
+ORDER BY date
+EOD;
+
+$stmt = $conn->prepare($cmd);
+$stmt->execute([':start' => $start, ':end' => $end]);
+
+$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$movies = [];
+
+foreach ($rows as $row) {
+	$movie = new Movie($row['name'], $row['date'], $row['country'], $row['director']);
+	$movies[] = $movie;
+}
+
+echo(json_encode($movies));
+
+?>

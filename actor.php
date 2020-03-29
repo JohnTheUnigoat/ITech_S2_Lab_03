@@ -22,15 +22,16 @@ $stmt = $conn->prepare($cmd);
 $stmt->execute([':actor' => $actor]);
 
 $rows = $stmt->fetchAll();
+
 ?>
 
 <movies>
 	<?php foreach($rows as $row): ?>
 	<movie>
-		<name><?=$row[0]?></name>
-		<date><?=$row[1]?></date>
-		<country><?=$row[2]?></country>
-		<director><?=$row[3]?></director>
+		<name><?=htmlspecialchars($row['name'])?></name>
+		<date><?=$row['date']?></date>
+		<country><?=$row['country']?></country>
+		<director><?=htmlspecialchars($row['director'])?></director>
 	</movie>
 	<?php endforeach; ?>
 </movies>

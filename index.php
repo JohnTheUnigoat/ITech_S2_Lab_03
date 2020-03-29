@@ -85,7 +85,7 @@
 				<label for="end">End date</label>
 				<input class="input" type="date" name="end" id="end" value=<?=$date_defaults['max']?>>
 
-				<input class="input" type="button" value="Submit">
+				<input class="input" type="button" value="Submit" onclick="getByTimePeriod()">
 			</div>
 
 			<div class="table-container">
@@ -98,7 +98,7 @@
 							<th>Director</th>
 						</tr>
 					</thead>
-					<tbody id="tbody_time">
+					<tbody id="tbody-time">
 					</tbody>
 				</table>
 			</div>
