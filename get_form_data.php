@@ -33,6 +33,4 @@ $stmt = $conn->prepare($cmd);
 $stmt->execute();
 
 $date_defaults = $stmt->fetch(PDO::FETCH_ASSOC);
-
-print_r($date_defaults);
 ?>

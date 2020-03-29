@@ -54,7 +54,7 @@
 					<option value="<?=$actor?>"> <?=$actor?> </option>
 					<?php endforeach; ?>
 				</select>
-				<input class="input" type="button" value="Submit">
+				<input class="input" type="button" value="Submit" onclick="getByActor()">
 			</div>
 
 			<div class="table-container">
@@ -73,6 +73,7 @@
 			</div>
 
 		</div>
+
 		<!-- Time period form -->
 		<h2>Select movies by time period</h2>
 		<div class="container">

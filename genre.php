@@ -1,4 +1,3 @@
-
 <?php
 $genre = $_GET['genre'];
 
